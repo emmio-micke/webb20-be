@@ -1,0 +1,68 @@
+// 20210215140140
+// https://randomuser.me/api
+{
+    "results": [
+        {
+            "gender": "female",
+            "name": {
+                "title": "Madame",
+                "first": "Ronja",
+                "last": "Lecomte"
+            },
+            "location": {
+                "street": {
+                    "number": 4798,
+                    "name": "Place de L'Abbé-Franz-Stock"
+                },
+                "city": "Beggingen",
+                "state": "Graubünden",
+                "country": "Switzerland",
+                "postcode": 4664,
+                "coordinates": {
+                    "latitude": "-53.0701",
+                    "longitude": "58.9499"
+                },
+                "timezone": {
+                    "offset": "-1:00",
+                    "description": "Azores, Cape Verde Islands"
+                }
+            },
+            "email": "ronja.lecomte@example.com",
+            "login": {
+                "uuid": "d8967315-5635-4b30-baad-1bd49961b8ee",
+                "username": "ticklishbutterfly729",
+                "password": "patrick1",
+                "salt": "zluTmb8M",
+                "md5": "33aa5b4a870a1263d0379cdc784d1349",
+                "sha1": "45a52c8d8ad51da6fac1ae88d8f8cba5c526cbe6",
+                "sha256": "5fe5e20967052b50811b3440dc43e044766859a27b7dd974723fd40e6a1e4636"
+            },
+            "dob": {
+                "date": "1989-04-27T03:53:16.813Z",
+                "age": 32
+            },
+            "registered": {
+                "date": "2007-04-06T16:11:53.084Z",
+                "age": 14
+            },
+            "phone": "075 658 94 22",
+            "cell": "075 877 53 87",
+            "id": {
+                "name": "AVS",
+                "value": "756.4408.2008.27"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/55.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/55.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/55.jpg"
+            },
+            "nat": "CH"
+        }
+    ],
+    "info": {
+        "seed": "5b2d77ec83b1bd87",
+        "results": 1,
+        "page": 1,
+        "version": "1.3"
+    }
+}
