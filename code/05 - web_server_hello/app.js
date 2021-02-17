@@ -3,10 +3,11 @@ const http = require('http');
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+const server = http.createServer((request, response) => {
+  response.statusCode = 200;
+  response.setHeader('Content-Type', 'text/html');
+  response.write('<h1>Lorem ipsum</h1>');
+  response.end('Hello World\n');
 });
 
 server.listen(port, hostname, () => {
