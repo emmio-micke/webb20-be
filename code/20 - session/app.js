@@ -7,7 +7,7 @@ app.set('trust proxy', 1) // trust first proxy
 
 app.use(cookieSession({
     name: 'session',
-    keys: ['key1', 'key2']
+    keys: ['veryimportantsecret', 'notsoimportantsecret']
 }))
 
 app.get('/', function (req, res, next) {
@@ -23,7 +23,7 @@ app.get('/', function (req, res, next) {
     biggestId++;
 
     // Define a new task and add it to the array.
-    let new_task = {id: biggestId, content: 'test'};
+    let new_task = { id: biggestId, content: 'test' };
 
     tasks.push(new_task)
 
