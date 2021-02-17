@@ -7,11 +7,11 @@ app.get('/', function (request, response) {
 });
 
 app.get('/handle-data', function (request, response) {
-        let data = '<strong>name:</strong> ' + request.query.name + '<br>';
-        data += '<strong>age:</strong> ' + request.query.age + '<br>';
-        data += '<strong>color:</strong> ' + request.query.color + '<br>';
+    let data = '<strong>name:</strong> ' + request.query.name + '<br>';
+    data += '<strong>age:</strong> ' + request.query.age + '<br>';
+    data += '<strong>color:</strong> ' + request.query.color + '<br>';
 
-        response.send(data);
-    });
+    response.send(data);
+});
 
 app.listen(3000);
