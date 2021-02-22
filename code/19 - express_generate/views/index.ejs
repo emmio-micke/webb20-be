@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>Welcome to <%= title %>
+  </p>
+  <p>
+    var createError = require('http-errors');
+    var express = require('express');
+    var path = require('path');
+    var cookieParser = require('cookie-parser');
+    var logger = require('morgan');
+  </p>
+  <pre>
+    var createError = require('http-errors');
+    var express = require('express');
+    var path = require('path');
+    var cookieParser = require('cookie-parser');
+    var logger = require('morgan');
+        </pre>
+  <%= "<p>hello world</p>" %>
+    <%- "<p>hello world</p>" %>
+      Vårt kodblock skulle kunna se ut såhär: <%% "<p>hello world</p>" -%> hello
+
+        <p>hello</p>
+</body>
+
 </html>
