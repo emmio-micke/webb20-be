@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>Users</h1>
+    <ul>
+        <% for (user of users) { %>
+            <li>
+                <%= user %>
+            </li>
+            <% } %>
+    </ul>
+</body>
+
+</html>
