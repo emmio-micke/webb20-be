@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', e => {
             input.value = e.target.textContent.trim()
             input.addEventListener('blur', e => {
                 let url = `/edit/${id}`
-                let data = `todo_item=${encodeURIComponent(input.value)}`;
+                let data = `todo_item=${input.value}`;
 
                 fetch(url, {
                     method: 'POST',
