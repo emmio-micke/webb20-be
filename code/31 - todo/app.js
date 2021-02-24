@@ -1,10 +1,19 @@
 const express = require('express')
 const app = express()
 
+const bodyParser = require('body-parser')
+const cookieSession = require('cookie-session')
+
 app.use('/public', express.static('assets'));
 
+app.use(cookieSession({
+    name: 'session',
+    keys: ['veryimportantsecret', 'notsoimportantsecret']
+}))
 
 app.get('/', (request, response) => {
+    let tasks = request.session.tasks || []
+    /*
     let tasks = [
         {
             id: 1,
@@ -22,7 +31,12 @@ app.get('/', (request, response) => {
             done: false
         }
     ];
+    */
     response.render('index.ejs', { tasks: tasks })
+})
+
+app.post('/add', (request, response) => {
+
 })
 
 
