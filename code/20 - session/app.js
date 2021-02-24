@@ -3,7 +3,7 @@ var express = require('express')
 
 var app = express()
 
-app.set('trust proxy', 1) // trust first proxy
+// app.set('trust proxy', 1) // trust first proxy
 
 app.use(cookieSession({
     name: 'session',

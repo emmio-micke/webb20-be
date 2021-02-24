@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link href="/public/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Todo</h1>
+
+    <% if (tasks.length> 0) { %>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Task</th>
+                <th>Status</th>
+            </tr>
+            <% for (let task of tasks) { %>
+                <tr>
+                    <td>
+                        <%= task.id %>
+                    </td>
+                    <td>
+                        <%= task.task %>
+                    </td>
+                    <td>
+                        <%= task.done %>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+        <% } %>
+
+            <form method="post" action="/add">
+                <input name="todo_item">
+                <input type="submit" value="Save">
+            </form>
+</body>
+
+</html>
