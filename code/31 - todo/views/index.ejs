@@ -13,40 +13,43 @@
     <h1>Todo</h1>
 
     <% if (tasks.length> 0) { %>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Task</th>
-                <th>Status</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <% for (let task of tasks) { %>
+        <form method="post" action="/edit">
+            <table id="tasklist">
                 <tr>
-                    <td>
-                        <%= task.id %>
-                    </td>
-                    <td>
-                        <%= task.task %>
-                    </td>
-                    <td>
-                        <%= task.done %>
-                    </td>
-                    <td>
-                        <a href="/edit/<%= task.id %>">Edit</a>
-                    </td>
-                    <td>
-                        <a href="/delete/<%= task.id %>">Remove</a>
-                    </td>
+                    <th>Id</th>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-                <% } %>
-        </table>
+                <% for (let task of tasks) { %>
+                    <tr>
+                        <td>
+                            <%= task.id %>
+                        </td>
+                        <td data-id="<%= task.id %>">
+                            <%= task.task %>
+                        </td>
+                        <td>
+                            <%= task.done %>
+                        </td>
+                        <td>
+                            <a href="/edit/<%= task.id %>">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/delete/<%= task.id %>">Remove</a>
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+        </form>
         <% } %>
 
             <form method="post" action="/add">
                 <input name="todo_item">
                 <input type="submit" value="Save">
             </form>
+            <script src="/public/script.js"></script>
 </body>
 
 </html>

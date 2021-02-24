@@ -11,7 +11,7 @@ app.use(cookieSession({
     keys: ['veryimportantsecret', 'notsoimportantsecret']
 }))
 
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (request, response) => {
     let tasks = request.session.tasks || []
@@ -68,7 +68,6 @@ app.get('/edit/:id', (request, response) => {
 
 app.post('/edit/:id', (request, response) => {
     let tasks = request.session.tasks || []
-
 
     for (let task of tasks) {
         if (task.id == request.params.id) {
