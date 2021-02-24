@@ -3,21 +3,22 @@ document.addEventListener('DOMContentLoaded', e => {
 
     if (typeof table !== 'undefined') {
         table.addEventListener('click', e => {
+            let id = e.target.getAttribute('data-id')
             let input = document.createElement('input')
             input.value = e.target.textContent.trim()
             input.addEventListener('blur', e => {
-                let id = e.target.getAttribute('data-id')
-                let new_value = input.value
-
                 let url = `/edit/${id}`
-                let data = { todo_item: new_value }
+                let data = `todo_item=${encodeURIComponent(input.value)}`;
 
                 fetch(url, {
                     method: 'POST',
-                    body: JSON.stringify(data) // body data type must match "Content-Type" header
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: data
                 })
                     .then(response => {
-                        console.log(response)
+                        window.location = '/';
                     })
             })
 

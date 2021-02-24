@@ -11,7 +11,7 @@ app.use(cookieSession({
     keys: ['veryimportantsecret', 'notsoimportantsecret']
 }))
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded())
 
 app.get('/', (request, response) => {
     let tasks = request.session.tasks || []
