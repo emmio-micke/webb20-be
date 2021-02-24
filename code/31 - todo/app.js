@@ -44,11 +44,9 @@ app.post('/add', (request, response) => {
 app.get('/delete/:id', (request, response) => {
     let tasks = request.session.tasks || []
 
-    tasks = tasks.filter(task => {
+    request.session.tasks = tasks.filter(task => {
         return task.id != request.params.id
     })
-
-    request.session.tasks = tasks
 
     response.redirect('/')
 })
@@ -68,5 +66,17 @@ app.get('/edit/:id', (request, response) => {
     response.render('edit.ejs', view_task)
 })
 
+app.post('/edit/:id', (request, response) => {
+    let tasks = request.session.tasks || []
+
+
+    for (let task of tasks) {
+        if (task.id == request.params.id) {
+            task.task = request.body.todo_item
+        }
+    }
+
+    response.redirect('/')
+})
 
 app.listen(3000)

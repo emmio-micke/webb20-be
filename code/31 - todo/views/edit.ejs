@@ -13,9 +13,8 @@
     <h1>Todo</h1>
 
     <form method="post" action="/edit/<%= id %>">
-        <input name="todo_item">
+        <input name="todo_item" value="<%= task %>">
         <input type="submit" value="Save">
-        <input type="hidden" name="task_id" value="<%= id %>">
     </form>
 </body>
 
