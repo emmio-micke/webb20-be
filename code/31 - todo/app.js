@@ -15,25 +15,7 @@ app.use(bodyParser.urlencoded())
 
 app.get('/', (request, response) => {
     let tasks = request.session.tasks || []
-    /*
-    let tasks = [
-        {
-            id: 1,
-            task: 'Tvätta kläder',
-            done: false
-        },
-        {
-            id: 2,
-            task: 'Handla',
-            done: false
-        },
-        {
-            id: 3,
-            task: 'Plugga node.js',
-            done: false
-        }
-    ];
-    */
+
     response.render('index.ejs', { tasks: tasks })
 })
 
@@ -57,6 +39,33 @@ app.post('/add', (request, response) => {
     request.session.tasks = tasks
 
     response.redirect('/')
+})
+
+app.get('/delete/:id', (request, response) => {
+    let tasks = request.session.tasks || []
+
+    tasks = tasks.filter(task => {
+        return task.id != request.params.id
+    })
+
+    request.session.tasks = tasks
+
+    response.redirect('/')
+})
+
+app.get('/edit/:id', (request, response) => {
+    let tasks = request.session.tasks || []
+
+    let current_tasks = tasks.filter(task => task.id == request.params.id)
+
+    let view_task
+    if (current_tasks.length == 1) {
+        view_task = current_tasks[0]
+    } else {
+        response.redirect('/')
+    }
+
+    response.render('edit.ejs', view_task)
 })
 
 
