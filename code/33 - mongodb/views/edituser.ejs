@@ -14,15 +14,16 @@
         <table>
             <tr>
                 <td>Username</td>
-                <td><input name="username"></td>
+                <td><input name="username" value="<%= username %>"></td>
             </tr>
 
             <tr>
                 <td>Email</td>
-                <td><input name="email"></td>
+                <td><input name="email" value="<%= email %>"></td>
             </tr>
         </table>
         <input type="submit" value="Save user">
+        <input type="hidden" name="userid" value="<%= _id %>">
     </form>
 </body>
 

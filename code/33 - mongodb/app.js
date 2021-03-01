@@ -31,13 +31,38 @@ app.post('/adduser', (request, response) => {
 })
 
 app.get('/edituser/:id', (request, response) => {
-    response.render('edituser.ejs')
+    const users = request.db.get('usercollection')
+    users
+        .find({ _id: request.params.id })
+        .then(data => {
+            if (data.length == 1) {
+                response.render('edituser.ejs', data[0])
+            }
+            else {
+                response.redirect('/')
+            }
+        })
 })
 
 app.get('/removeuser/:id', (request, response) => {
     const users = request.db.get('usercollection')
 
     users.remove({ _id: request.params.id })
+    response.redirect('/')
+})
+
+app.post('/saveuser', (request, response) => {
+    const users = request.db.get('usercollection')
+    users.update(
+        {
+            _id: request.body.userid
+        }, {
+        $set: {
+            username: request.body.username,
+            email: request.body.email
+        }
+    })
+
     response.redirect('/')
 })
 
