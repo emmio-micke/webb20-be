@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User list</title>
+</head>
+
+<body>
+    <h1>User list</h1>
+    <form method="post" action="/adduser">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input name="username"></td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input name="email"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Add user">
+    </form>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% for (let user of users) { %>
+            <tr>
+                <td>
+                    <a href="mailto:<%= user.email %>">
+                        <%= user.username %>
+                    </a>
+                </td>
+                <td>
+                    <a href="/edituser/<%= user._id %>">Edit</a>
+                </td>
+                <td>
+                    <a href="/removeuser/<%= user._id %>">Remove</a>
+                </td>
+                <% } %>
+    </table>
+</body>
+
+</html>
