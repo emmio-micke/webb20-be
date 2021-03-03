@@ -10,7 +10,21 @@ app.get('/', (request, response) => {
     const BookModel = require('./models/book')
     const BookInstanceModel = require('./models/bookinstance')
     const GenreModel = require('./models/genre')
-    response.render('index.ejs')
+
+    BookModel
+        .findOne({
+            title: 'The Name of the Wind (The Kingkiller Chronicle, #1)'
+        })
+        .populate('author')
+        .populate('genre')
+        .exec((error, book) => {
+            if (error) {
+                return handleError(error)
+            }
+
+            console.log(book)
+            response.render('index.ejs', book)
+        })
 })
 
 db.on('error', error => {

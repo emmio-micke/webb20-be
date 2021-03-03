@@ -10,6 +10,23 @@
 
 <body>
     <h1>Library</h1>
+    <h2>
+        <%= title %>
+    </h2>
+
+    <p>Genre: <% for (genre_item of genre) { %>
+            <%= genre_item.name %>
+                <% } %>
+    </p>
+
+    <p>Författare: <%= author.first_name %>
+            <%= author.family_name %>
+    </p>
+
+    <p>Beskrivning:</p>
+    <p>
+        <%= summary %>
+    </p>
 </body>
 
 </html>
