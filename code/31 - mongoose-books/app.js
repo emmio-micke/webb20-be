@@ -13,10 +13,9 @@ app.get('/', (request, response) => {
 
     BookModel
         .findOne({
-            title: 'The Name of the Wind (The Kingkiller Chronicle, #1)'
+            title: 'Test Book 1'
         })
-        .populate('author')
-        .populate('genre')
+        .populate(['author', 'genre'])
         .exec((error, book) => {
             if (error) {
                 return handleError(error)

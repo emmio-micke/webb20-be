@@ -22,7 +22,7 @@ const AuthorSchema = new Schema({
 
 AuthorSchema
     .virtual('name')
-    .get(() => {
+    .get(function () {
         let fullname = 'undefined'
 
         if (this.first_name && this.family_name) {

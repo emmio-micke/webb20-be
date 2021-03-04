@@ -14,13 +14,10 @@
         <%= title %>
     </h2>
 
-    <p>Genre: <% for (genre_item of genre) { %>
-            <%= genre_item.name %>
-                <% } %>
+    <p>Genre: <%= genre.map(genre_item=> genre_item.name).join(', ') %>
     </p>
 
-    <p>Författare: <%= author.first_name %>
-            <%= author.family_name %>
+    <p>Författare: <%= author.name %>
     </p>
 
     <p>Beskrivning:</p>
