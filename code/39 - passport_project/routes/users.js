@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const User = require('../models/users')
+const bcrypt = require('bcrypt')
 
 // Login
 router.get('/login', (request, response) => {
@@ -39,8 +40,21 @@ router.post('/register', (request, response) => {
         const newUser = new User({
             name, email, password
         })
+
+        bcrypt.hash(password, 10, function (error, hash) {
+            // Store hash in your password DB.
+            newUser.password = hash
+
+            newUser
+                .save()
+                .then(value => {
+                    request.flash('success_msg', 'You have been registered!')
+                    response.redirect('/users/login')
+                })
+                .catch(error => console.log(error))
+        });
+
     }
-    response.end()
 
 })
 
