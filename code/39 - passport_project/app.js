@@ -11,6 +11,8 @@ const path = require('path')
 // const { response } = require('express')
 const passport = require('passport')
 
+require('./config/passport')(passport)
+
 
 mongoose.connect('mongodb://localhost:27017/login')
     .then(() => console.log('connected to db'))
@@ -32,8 +34,8 @@ app.use(session({
 }))
 
 // Passport
-//app.use(passport.initialize())
-//app.use(passport.session())
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Flash
 app.use(flash())
