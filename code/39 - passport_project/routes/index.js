@@ -10,8 +10,7 @@ router.get('/', (request, response) => {
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (request, response) => {
-    const user = request.user
-    response.render('dashboard', user)
+    response.render('dashboard', { user: request.user })
 })
 
 

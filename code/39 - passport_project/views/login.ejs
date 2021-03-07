@@ -1,18 +1,28 @@
 <form action="/users/login" method="post">
-    <h1 class="h3 mb-3 fw-normal">Please login</h1>
-    <%- include('partials/messages') %>
+  <h1 class="h3 mb-3 fw-normal">Please login</h1>
+  <%- include('partials/messages') %>
 
-        <label for="inputEmail" class="visually-hidden">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address"
-            value="hijikas@mailinator.net" required>
+  <label for="inputEmail" class="visually-hidden">Email address</label>
+  <input
+    type="email"
+    id="inputEmail"
+    class="form-control"
+    name="email"
+    placeholder="Email address"
+    value="hijikas@mailinator.net"
+    required
+  />
 
-        <label for="inputPassword" class="visually-hidden">Password</label>
-        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password"
-            value="Pa$$w0rd!" required>
+  <label for="inputPassword" class="visually-hidden">Password</label>
+  <input
+    type="password"
+    id="inputPassword"
+    class="form-control"
+    name="password"
+    placeholder="Password"
+    value="Pa$$w0rd!"
+    required
+  />
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-
-        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 </form>
-
-<p><a href="/users/register">No account? Get one!</a></p>
