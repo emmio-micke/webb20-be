@@ -1,7 +1,5 @@
 const express = require('express');
 const multer = require('multer');
-const cors = require('cors');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
 // create express app
@@ -17,40 +15,52 @@ const upload = multer({
         files: 5, // allow up to 5 files per request,
         fieldSize: 2 * 1024 * 1024 // 2 MB (max file size)
     },
-    fileFilter: (req, file, cb) => {
+    /*
+    File information
+    Each file contains the following information:
+
+    Key	            Description	                                Note
+    fieldname	    Field name specified in the form	
+    originalname	Name of the file on the user's computer	
+    encoding	    Encoding type of the file	
+    mimetype	    Mime type of the file	
+    size	        Size of the file in bytes	
+    destination	    The folder to which the file has been saved	DiskStorage
+    filename	    The name of the file within the destination	DiskStorage
+    path	        The full path to the uploaded file	        DiskStorage
+    buffer	        A Buffer of the entire file	                MemoryStorage
+    */
+    fileFilter: (request, file, callback) => {
         // allow images only
         if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-            return cb(new Error('Only images are allowed.'), false);
+            return callback(new Error('Only images are allowed.'), false);
         }
-        cb(null, true);
+        callback(null, true);
     }
 });
 
-// enable CORS
-app.use(cors());
-
 // add other middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html')
+app.get('/', function (request, response) {
+    response.sendFile(__dirname + '/index.html')
 });
 
-app.post('/upload-profile-pic', upload.single('profile_pic'), async (req, res) => {
+app.post('/upload-profile-pic', upload.single('profile_pic'), async (request, response) => {
     try {
-        const avatar = req.file;
+        const avatar = request.file;
 
         // make sure file is available
         if (!avatar) {
-            res.status(400).send({
+            response.status(400).send({
                 status: false,
                 data: 'No file is selected.'
             });
         } else {
             // send response
-            res.send({
+            response.send({
                 status: true,
                 message: 'File is uploaded.',
                 data: {
@@ -62,17 +72,17 @@ app.post('/upload-profile-pic', upload.single('profile_pic'), async (req, res) =
         }
 
     } catch (err) {
-        res.status(500).send(err);
+        response.status(500).send(err);
     }
 });
 
-app.post('/upload-photos', upload.array('photos', 8), async (req, res) => {
+app.post('/upload-photos', upload.array('photos', 8), async (request, response) => {
     try {
-        const photos = req.files;
+        const photos = request.files;
 
         // check if photos are available
         if (!photos) {
-            res.status(400).send({
+            response.status(400).send({
                 status: false,
                 data: 'No photo is selected.'
             });
@@ -87,7 +97,7 @@ app.post('/upload-photos', upload.array('photos', 8), async (req, res) => {
             }));
 
             // send response
-            res.send({
+            response.send({
                 status: true,
                 message: 'Photos are uploaded.',
                 data: data
@@ -95,7 +105,7 @@ app.post('/upload-photos', upload.array('photos', 8), async (req, res) => {
         }
 
     } catch (err) {
-        res.status(500).send(err);
+        response.status(500).send(err);
     }
 });
 
