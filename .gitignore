@@ -157,3 +157,4 @@ dist
 
 test.js
 code/35 - fileupload_express/uploads/*
+code/36 - fileupload_multer/uploads/*

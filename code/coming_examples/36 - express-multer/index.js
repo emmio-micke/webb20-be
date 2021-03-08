@@ -78,6 +78,7 @@ app.post('/upload-profile-pic', upload.single('profile_pic'), async (request, re
 
 app.post('/upload-photos', upload.array('photos', 8), async (request, response) => {
     try {
+        await upload(request, response);
         const photos = request.files;
 
         // check if photos are available

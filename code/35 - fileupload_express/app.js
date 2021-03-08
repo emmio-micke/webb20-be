@@ -22,16 +22,35 @@ app.post('/upload-profile-pic', (request, response) => {
         if (request.files) {
             let profile_pic = request.files.profile_pic
 
+            // console.log(profile_pic)
+
             let file_name = `./uploads/${profile_pic.name}`
 
             profile_pic.mv(file_name)
 
-            response.render('image', { image: file_name })
+            response.render('image', { images: [file_name] })
         } else {
             response.end('<h1>No file uploaded!</h1>')
         }
     } catch (error) {
-        response.send(error)
+        response.end(error)
+    }
+})
+
+app.post('/upload-photos', (request, response) => {
+    try {
+        let images = []
+
+        for (let photo of request.files.photos) {
+            let file_name = `./uploads/${photo.name}`
+            photo.mv(file_name)
+
+            images.push(file_name)
+        }
+
+        response.render('image', { images: images })
+    } catch (error) {
+        response.end(error)
     }
 })
 
