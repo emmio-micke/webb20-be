@@ -9,6 +9,22 @@ const deleteBook = (isbn, element) => {
         })
 }
 
+const editBook = isbn => {
+    fetch(`/books/${isbn}`)
+        .then(response => response.json())
+        .then(book => {
+            document.getElementById('isbn').value = book.isbn
+            document.getElementById('title').value = book.title
+            document.getElementById('subtitle').value = book.subtitle
+            document.getElementById('author').value = book.author
+            document.getElementById('published').value = book.published
+            document.getElementById('publisher').value = book.publisher
+            document.getElementById('pages').value = book.pages
+            document.getElementById('description').value = book.description
+            document.getElementById('website').value = book.website
+        })
+}
+
 const loadBooks = () => {
     fetch('/books')
         .then(response => response.json())
@@ -22,7 +38,7 @@ const loadBooks = () => {
                         <h5 class="card-title">${book.title}</h5>
                         <p class="card-text">${book.description}</p>
                         <button class="btn btn-danger" onclick="deleteBook('${book.isbn}', this)">Delete</button>
-                        <a href="#" class="btn btn-primary">View details</a>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal" onclick="editBook('${book.isbn}')">Edit</button>
                     </div>
                 </div>`
 

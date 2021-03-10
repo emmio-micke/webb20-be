@@ -30,6 +30,18 @@ app.get('/books', (request, response) => {
     response.send(books)
 })
 
+app.get('/books/:isbn', (request, response) => {
+    const isbn = request.params.isbn
+
+    let book = books.filter(book => book.isbn == isbn)
+
+    if (book.length > 0) {
+        response.send(book[0])
+    } else {
+        response.status(404).send('Book not found')
+    }
+})
+
 app.delete('/books/:isbn', (request, response) => {
     const isbn = request.params.isbn
 
