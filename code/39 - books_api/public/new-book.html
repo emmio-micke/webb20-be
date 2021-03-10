@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new book</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create new book</h1>
+
+      <form action="/book" method="post">
+        <div class="mb-3">
+          <label for="isbn" class="form-label">ISBN</label>
+          <input
+            type="text"
+            class="form-control"
+            id="isbn"
+            aria-describedby="isbnHelp"
+          />
+          <div id="isbnHelp" class="form-text">
+            The ISBN number for your book.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            aria-describedby="titleHelp"
+          />
+          <div id="titleHelp" class="form-text">The title of the book.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="subtitle" class="form-label">Subtitle</label>
+          <input
+            type="text"
+            class="form-control"
+            id="subtitle"
+            aria-describedby="subtitleHelp"
+          />
+          <div id="subtitleHelp" class="form-text">
+            The subtitle of the book.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="author" class="form-label">Author</label>
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+            aria-describedby="authorHelp"
+          />
+          <div id="authorHelp" class="form-text">Enter the book's author.</div>
+
+        <div class="mb-3">
+          <label for="published" class="form-label">Published</label>
+          <input
+            type="text"
+            class="form-control"
+            id="published"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="publisher" class="form-label">Publisher</label>
+          <input
+            type="text"
+            class="form-control"
+            id="publisher"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="pages" class="form-label">Pages</label>
+          <input
+            type="number"
+            class="form-control"
+            id="pages"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="website" class="form-label">Website</label>
+          <input
+            type="url"
+            class="form-control"
+            id="website"
+          />
+        </div>
+
+        <button type="button" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/public/scripts/books.js"></script>
+  </body>
+</html>

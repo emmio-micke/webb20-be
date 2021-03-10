@@ -14,22 +14,9 @@
   </head>
   <body>
     <div class="container">
-      <h1>Create new book</h1>
+      <h1>View books</h1>
 
-      <form action="/book" method="post">
-        <div class="mb-3">
-          <label for="isbn" class="form-label">ISBN</label>
-          <input
-            type="text"
-            class="form-control"
-            id="isbn"
-            aria-describedby="isbnHelp"
-          />
-          <div id="isbnHelp" class="form-text">
-            The ISBN number for your book.
-          </div>
-        </div>
-      </form>
+      <div id="books"></div>
     </div>
 
     <script
@@ -37,5 +24,7 @@
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
+
+    <script src="/public/scripts/books.js"></script>
   </body>
 </html>
