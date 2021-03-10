@@ -16,7 +16,7 @@
     <div class="container">
       <h1>Create new book</h1>
 
-      <form action="/book" method="post">
+      <form>
         <div class="mb-3">
           <label for="isbn" class="form-label">ISBN</label>
           <input
@@ -108,7 +108,7 @@
           />
         </div>
 
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" id="submit_book">Submit</button>
       </form>
     </div>
 
@@ -118,6 +118,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/public/scripts/books.js"></script>
+    <script src="/public/scripts/new-book.js"></script>
   </body>
 </html>

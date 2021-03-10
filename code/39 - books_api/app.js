@@ -13,20 +13,30 @@ app.get('/', (request, response) => {
     response.sendFile(__dirname + '/public/book-list.html')
 })
 
+app.get('/new-book', (request, response) => {
+    response.sendFile(__dirname + '/public/new-book.html')
+})
+
 app.post('/books', (request, response) => {
     const book = request.body
 
     console.log(book)
     books.push(book)
 
-    response.end('Book was added')
+    response.end()
 })
 
 app.get('/books', (request, response) => {
     response.send(books)
 })
 
+app.delete('/books/:isbn', (request, response) => {
+    const isbn = request.params.isbn
 
+    books = books.filter(book => book.isbn != isbn)
+
+    response.end()
+})
 
 app.listen(3000)
 
