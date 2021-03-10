@@ -20,7 +20,6 @@ app.get('/new-book', (request, response) => {
 app.post('/books', (request, response) => {
     const book = request.body
 
-    console.log(book)
     books.push(book)
 
     response.end()
@@ -46,6 +45,22 @@ app.delete('/books/:isbn', (request, response) => {
     const isbn = request.params.isbn
 
     books = books.filter(book => book.isbn != isbn)
+
+    response.end()
+})
+
+app.put('/books/:isbn', (request, response) => {
+    const isbn = request.params.isbn
+    const book_data = request.body
+
+
+    books = books.map(book => {
+        if (book.isbn == isbn) {
+            return book_data
+        } else {
+            return book
+        }
+    })
 
     response.end()
 })
