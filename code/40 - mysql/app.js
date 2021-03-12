@@ -31,5 +31,41 @@ app.get('/users', (request, response) => {
     })
 })
 
+app.get('/api/users', (request, response) => {
+    connection.query('SELECT employeeNumber, lastName, firstName, email FROM employees', (error, users) => {
+        if (error) {
+            throw error;
+        }
+        response.json(users)
+    })
+})
+
+/*
+const employee = { firstName: 'Winnie', officeCode: 1 };
+connection.query('INSERT INTO employees (employeeNumber, firstName) VALUES (?, ?)', ['12345', 'Winnie'], (err, result) => {
+    if (err) throw err;
+
+    console.log('Last insert ID:', result.insertId);
+});
+
+connection.query(
+    'UPDATE employees SET location = ? WHERE ID = ?',
+    ['South Africa', 5],
+    (err, result) => {
+        if (err) throw err;
+
+        console.log(`Changed ${result.changedRows} row(s)`);
+    }
+);
+
+connection.query(
+    'DELETE FROM employees WHERE id = ?', [5], (err, result) => {
+        if (err) throw err;
+
+        console.log(`Deleted ${result.affectedRows} row(s)`);
+    }
+);
+*/
+
 
 app.listen(3000)
