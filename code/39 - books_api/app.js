@@ -53,7 +53,6 @@ app.put('/books/:isbn', (request, response) => {
     const isbn = request.params.isbn
     const book_data = request.body
 
-
     books = books.map(book => {
         if (book.isbn == isbn) {
             return book_data
